@@ -19,7 +19,24 @@ const getAllUsers = () => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield user_model_1.User.find({});
     return result;
 });
+const getSingleUser = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_model_1.User.findById(id);
+    return result;
+});
+const updateSingleUser = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_model_1.User.findOneAndUpdate({ _id: id }, payload, {
+        new: true,
+    });
+    return result;
+});
+const deleteUser = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_model_1.User.findByIdAndDelete(id);
+    return result;
+});
 exports.UserService = {
     createUser,
     getAllUsers,
+    getSingleUser,
+    updateSingleUser,
+    deleteUser,
 };

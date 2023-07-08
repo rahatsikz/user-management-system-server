@@ -47,7 +47,41 @@ const getAllUsers = (0, catchAsync_1.catchAsync)((req, res) => __awaiter(void 0,
         data: result,
     });
 }));
+const getSingleUser = (0, catchAsync_1.catchAsync)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    const result = yield user_service_1.UserService.getSingleUser(id);
+    (0, sendResponse_1.sendResponse)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: "User retrieved Successfully",
+        data: result,
+    });
+}));
+const updateSingleUser = (0, catchAsync_1.catchAsync)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    const updateUserData = __rest(req.body, []);
+    const result = yield user_service_1.UserService.updateSingleUser(id, updateUserData);
+    (0, sendResponse_1.sendResponse)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: "User updated Successfully",
+        data: result,
+    });
+}));
+const deleteUser = (0, catchAsync_1.catchAsync)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    const result = yield user_service_1.UserService.deleteUser(id);
+    (0, sendResponse_1.sendResponse)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: "User deleted Successfully",
+        data: result,
+    });
+}));
 exports.UserController = {
     createUser,
     getAllUsers,
+    getSingleUser,
+    updateSingleUser,
+    deleteUser,
 };
